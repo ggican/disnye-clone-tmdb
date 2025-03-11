@@ -9,7 +9,7 @@ import { useLandingPageContext } from "@import/providers/LandingPageProviders";
 import WatchLisStyles from "./WatchList.styles";
 
 export default function WatchListElement() {
-  const { localWhishList, onDeletedData, onSelectedData, selectedData } = useLandingPageContext();
+  const { localWhishList, onSelectedData, selectedData } = useLandingPageContext();
   return (
     <div className="container">
       <WatchLisStyles>

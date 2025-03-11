@@ -31,6 +31,8 @@ const DEFAULT_CONTEXT = {
     return false;
   },
   localWhishList: [],
+  onSelectedData: () => {},
+  selectedData: null,
 };
 
 type LandingPageContextProps = {
@@ -38,6 +40,8 @@ type LandingPageContextProps = {
   onCheckWatchList: any;
   onGetDataById: (values: number) => boolean;
   localWhishList: ValueWishList[];
+  onSelectedData: (id: string) => void;
+  selectedData: any;
 };
 
 const LandingPageContext = createContext<LandingPageContextProps>(DEFAULT_CONTEXT);
@@ -85,7 +89,7 @@ const LandingPageProvider: React.FC<LandingPageProvidersProps> = ({ children }) 
     return listSeriesAndMovie;
   };
 
-  const onSelectedData = (id) => {
+  const onSelectedData = (id: string) => {
     if (selectedData?.has(id)) {
       setSelectedData((prevState: any) => {
         const newSelectData = new Set(prevState);
@@ -101,11 +105,9 @@ const LandingPageProvider: React.FC<LandingPageProvidersProps> = ({ children }) 
     }
   };
 
-  const onDeletedData = (id) => {
+  const onDeletedData = (id: string) => {
     console.log(id);
   };
-
-  console.log(selectedData, "selectedData");
 
   const props = {
     onWishList: onWishList,
